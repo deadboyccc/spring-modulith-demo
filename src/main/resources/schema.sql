@@ -71,4 +71,4 @@ VALUES ('Understanding Spring Modulith', 'https://example.com/blog/spring-moduli
 -- =========================================================
 INSERT INTO subscriber (email)
 VALUES ('ahmed@example.com'),
-       ('jane.doe@example.com'),
+       ('jane.doe@example.com')
