@@ -1,3 +1,16 @@
 spring:
   application:
     name: spring-modulith-demo
+  logging:
+    level:
+      root: INFO
+  sql:
+    init:
+      mode: always
+  modulith:
+    events:
+      republish-outstanding-events-on-restart: true
+
+app:
+  notifications:
+    simulate-failure: false
