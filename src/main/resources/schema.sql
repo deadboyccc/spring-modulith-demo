@@ -33,7 +33,8 @@ CREATE TABLE IF NOT EXISTS event_publication
     status                 VARCHAR(16),
     completion_attempts    INTEGER,
     last_resubmission_date TIMESTAMP WITH TIME ZONE,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (listener_id) REFERENCES subscriber (id) ON DELETE CASCADE
 );
 
 -- Idempotent column additions (kept for migration history / older DBs)

@@ -23,11 +23,18 @@ public class NotificationService {
 
     @ApplicationModuleListener
     public void onContentPublished(ContentPublished event) {
+
         var content = event.content();
+
         if (simulateFailure) {
             throw new RuntimeException("Simulated notification failure for: " + content.title());
         }
-        subscribers.findAll().forEach(subscriber ->
-                log.info("Notifying {} about: {}", subscriber.email(), content.title()));
+
+        // for each subscriber, send a notification about the new content
+        // assumings #subscribers is highly concurrent, we can use parallelStream to notify subscribers in parallel
+        subscribers.findAll().parallelStream()
+                .forEach(subscriber -> {
+                    log.info("Notifying {} about new content: {}", subscriber.email(), content.title());
+                });
     }
 }

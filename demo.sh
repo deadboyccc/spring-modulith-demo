@@ -3,6 +3,7 @@
 for i in {1..10}
 do
   echo "Sending request $i of 10..."
+  sleep 1  # Wait for 1 second before sending the initial request
   
   http POST http://localhost:8080/api/content \
     title="Spring Modulith Post $i" \
