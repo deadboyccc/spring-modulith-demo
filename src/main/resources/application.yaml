@@ -1,9 +1,10 @@
 spring:
+  # Enable virtual threads across web server, @Async, and task execution
+  threads:
+    virtual:
+      enabled: true
   application:
     name: spring-modulith-demo
-  logging:
-    level:
-      root: INFO
   sql:
     init:
       mode: always
@@ -11,6 +12,15 @@ spring:
     events:
       republish-outstanding-events-on-restart: true
 
+logging:
+  file:
+    name: logs/async-operations.log
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+  level:
+    root: INFO
+    com.pm.springmodulithdemo: DEBUG
 app:
   notifications:
     simulate-failure: false

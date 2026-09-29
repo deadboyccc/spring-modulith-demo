@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS subscriber
 );
 
 -- =========================================================
--- Event publication (Spring Modulith event log)
+-- Event publication (Spring modulith event log)
 -- =========================================================
 CREATE TABLE IF NOT EXISTS event_publication
 (
@@ -33,8 +33,7 @@ CREATE TABLE IF NOT EXISTS event_publication
     status                 VARCHAR(16),
     completion_attempts    INTEGER,
     last_resubmission_date TIMESTAMP WITH TIME ZONE,
-    PRIMARY KEY (id),
-    FOREIGN KEY (listener_id) REFERENCES subscriber (id) ON DELETE CASCADE
+    PRIMARY KEY (id)
 );
 
 -- Idempotent column additions (kept for migration history / older DBs)
@@ -72,4 +71,4 @@ VALUES ('Understanding Spring Modulith', 'https://example.com/blog/spring-moduli
 -- =========================================================
 INSERT INTO subscriber (email)
 VALUES ('ahmed@example.com'),
-       ('jane.doe@example.com')
+       ('jane.doe@example.com');
